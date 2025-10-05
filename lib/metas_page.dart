@@ -58,9 +58,7 @@ class _MetasPageState extends State<MetasPage> {
               _gastosAtuais[cat] =
                   (_gastosAtuais[cat] ?? 0) + (t['valor'] as num).toDouble();
             }
-          } catch (e) {
-            // Ignora transações com data inválida
-          }
+          } catch (e) {}
         }
       }
 
@@ -259,7 +257,6 @@ class _MetasPageState extends State<MetasPage> {
                               ],
                             ),
 
-                            // Linha 2: Texto de gasto (se houver meta)
                             if (metaAtual > 0) ...[
                               const SizedBox(height: 12),
                               Text(
@@ -271,7 +268,6 @@ class _MetasPageState extends State<MetasPage> {
                               ),
                             ],
 
-                            // Linha 3: Campo de input
                             const SizedBox(height: 12),
                             TextField(
                               controller: _controllers[categoria],
@@ -299,7 +295,6 @@ class _MetasPageState extends State<MetasPage> {
                               ),
                             ),
 
-                            // Linha 4: Barra de progresso (se houver meta)
                             if (metaAtual > 0) ...[
                               const SizedBox(height: 12),
                               ClipRRect(

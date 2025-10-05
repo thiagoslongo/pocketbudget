@@ -311,13 +311,10 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  // NOVAS FUNÇÕES DO DASHBOARD
   Map<String, dynamic> _calcularEstatisticas() {
     final agora = DateTime.now();
     final mesAtual = agora.month;
     final anoAtual = agora.year;
-
-    // Filtra transações do mês atual
     final transacoesMesAtual =
         transacoes.where((t) {
           if (t['data'] == null) return false;
@@ -328,8 +325,6 @@ class _HomePageState extends State<HomePage> {
             return false;
           }
         }).toList();
-
-    // Filtra transações do mês passado
     final mesPAssado = mesAtual == 1 ? 12 : mesAtual - 1;
     final anoMesPassado = mesAtual == 1 ? anoAtual - 1 : anoAtual;
 
@@ -344,7 +339,6 @@ class _HomePageState extends State<HomePage> {
           }
         }).toList();
 
-    // Calcula maior gasto do mês
     final despesas =
         transacoesMesAtual.where((t) => t['tipo'] == 'Saída').toList();
     Map<String, dynamic>? maiorGasto;
@@ -352,7 +346,6 @@ class _HomePageState extends State<HomePage> {
       maiorGasto = despesas.reduce((a, b) => a['valor'] > b['valor'] ? a : b);
     }
 
-    // Calcula categoria que mais gastou
     Map<String, double> gastosPorCategoria = {};
     for (var t in despesas) {
       final categoria = t['categoria'] ?? 'Outros';
@@ -370,7 +363,6 @@ class _HomePageState extends State<HomePage> {
       valorCategoriaMaisGasta = entrada.value;
     }
 
-    // Calcula tendência (compara gasto total do mês)
     final gastoMesAtual = despesas.fold(
       0.0,
       (sum, t) => sum + (t['valor'] as num).toDouble(),
@@ -404,7 +396,6 @@ class _HomePageState extends State<HomePage> {
       children: [
         Row(
           children: [
-            // Card de Maior Gasto (compacto)
             if (stats['maiorGasto'] != null)
               Expanded(
                 child: Container(
@@ -467,7 +458,6 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
 
-            // Card de Categoria (compacto)
             if (stats['categoriaMaisGasta'] != null)
               Expanded(
                 child: Container(
@@ -532,7 +522,6 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
 
-        // Card de Tendência (linha separada, mais compacto)
         if (stats['percentualMudanca'] != null)
           Container(
             width: double.infinity,
@@ -761,7 +750,6 @@ class _HomePageState extends State<HomePage> {
               ),
               const SizedBox(height: 30),
 
-              // DASHBOARD CARDS - NOVO!
               _buildDashboardCards(),
               const SizedBox(height: 20),
             ],

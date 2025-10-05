@@ -24,9 +24,7 @@ class _FiltrosPageState extends State<FiltrosPage> {
     setState(() {
       _transacoesFiltradas =
           widget.todasTransacoes.where((t) {
-            // Filtro de período
             if (_periodoSelecionado != 'Todos') {
-              // Verifica se a transação tem o campo 'data'
               if (t['data'] == null) return false;
 
               try {
@@ -54,12 +52,10 @@ class _FiltrosPageState extends State<FiltrosPage> {
                   }
                 }
               } catch (e) {
-                // Se houver erro ao parsear a data, ignora essa transação
                 return false;
               }
             }
 
-            // Filtro de categoria
             if (_categoriaSelecionada != null &&
                 _categoriaSelecionada != 'Todas') {
               if (t['categoria'] != _categoriaSelecionada) return false;
