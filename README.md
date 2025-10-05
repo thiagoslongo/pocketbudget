@@ -1,16 +1,26 @@
-# pocket_budget
+# PocketBudget
 
-A new Flutter project.
+App de controle financeiro pessoal desenvolvido em Flutter com Firebase.
 
-## Getting Started
+## Funcionalidades
 
-This project is a starting point for a Flutter application.
+- ✅ Cadastro de receitas e despesas
+- ✅ Categorização de transações
+- ✅ Dashboard com estatísticas
+- ✅ Gráficos de gastos
+- ✅ Filtros e busca
+- ✅ Metas e orçamento
+- ✅ Persistência com Firebase
 
-A few resources to get you started if this is your first Flutter project:
+## Como executar
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+1. Clone o repositório
+2. Configure o Firebase (crie seu próprio projeto)
+3. Execute `flutter pub get`
+4. Execute `flutter run`
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Tecnologias
+
+- Flutter
+- Firebase (Firestore)
+- Material Design
